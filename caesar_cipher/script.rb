@@ -1,20 +1,18 @@
-# def caesar_cipher(string, num)
-#     cipher = ''
-#     string.each_char {|c| puts c, '' }
-
-#         # if ("a".."z").include? (char.downcase)
-#         #     num.times {char = char.next}
-#         #     cipher << char[-1]
-#         # end
-# end
-
-def caesar_cipher(string, number)
-    ascii = []
-    ascii == string.chars.map { |c| ascii << c.ord }
-    shifted = ascii.map { |c| c + number }
-    shifted = shifted.map { |c| c.chr}.join
-    p shifted
-end
-
-
-caesar_cipher("AZ", 3)
+def caesar_cipher(string, shift = 1)
+    # Make array of non-caps alphabet
+    alphabet = Array('a'..'z')
+    # Make hash of the non-caps part of the shifted string; original letter is key, shifted letter is value
+    non_caps = Hash[alphabet.zip(alphabet.rotate(shift))]
+    
+    # Same as before but with caps letters
+    alphabet = Array('A'..'Z')
+    caps = Hash[alphabet.zip(alphabet.rotate(shift))]
+    
+    # Merge both hashes
+    encrypter = non_caps.merge(caps)
+    
+    # Fetch the value of string's character's shifted value and join the new array into one string
+    string.chars.map { |c| encrypter.fetch(c, c) }.join
+  end
+  
+p caesar_cipher("TestinG", 2)
