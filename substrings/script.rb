@@ -1,14 +1,3 @@
-# Implement #substrings method that takes a word and an array of valid substrings (dictionary)
-# as arguments. Return a hash listing each substring (case insensitive) that was found
-# in the original string and how many times it was found.
-
-# Make sure it can handle multiple words
-
-# TIPS
-# .split (string to array, divided by words)
-# .join(' ') (array to string with space in between words)
-# .count (count elements in array)
-
 dictionary = [
     "below", "go", "down", "above", "how", "hello", "up",
     "it", "return", "us", "world", "i", "low", "high",
